@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stef.Sewing - Créations & Bijoux</title>
+    <meta name="description" content="Sacs uniques et éco-responsables issus de l'upcycling. Découvrez nos bananes upcycling artisanales et besaces en tissu recyclé fabriquées à la main.">
+    <meta name="keywords" content="upcycling, banane upcycling artisanale, besace tissu recyclé, sac éco-responsable, zéro déchet, artisanat textile">
+    <title>Stef.Sewing - Sacs uniques & éco-responsables (Upcycling)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -11,38 +13,38 @@
             font-family: 'Nunito', sans-serif;
             background-color: #fdf8f5;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        h1, h2, h3, h4, .font-round {
+        h1, h2, h3, h4, h5, .font-round {
             font-family: 'Fredoka', sans-serif;
         }
         
-        /* FOND ANIMÉ 100% COMPATIBLE MOBILE */
         .bg-blobs {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background-color: #fdf8f5;
+            background-color: #fcf9f5; /* more natural earth tone for eco-friendly */
             pointer-events: none;
         }
         
         .blob {
             position: absolute;
             animation: morph 8s ease-in-out infinite alternate;
-            opacity: 0.35; 
+            opacity: 0.25;
         }
 
         .blob-1 {
             top: -5%; left: -10%;
             width: 350px; height: 350px;
-            background: linear-gradient(135deg, #FF9A9E, #FECFEF);
+            background: linear-gradient(135deg, #A8C9A7, #E0EACD);
             animation-duration: 12s;
         }
 
         .blob-2 {
             bottom: -5%; right: -10%;
             width: 300px; height: 300px;
-            background: linear-gradient(135deg, #A1C4FD, #C2E9FB);
+            background: linear-gradient(135deg, #D4A373, #FAEDCB);
             animation-delay: -2s;
             animation-duration: 10s;
         }
@@ -50,7 +52,7 @@
         .blob-3 {
             top: 30%; left: 40%;
             width: 250px; height: 250px;
-            background: linear-gradient(135deg, #FBC2EB, #a6c1ee);
+            background: linear-gradient(135deg, #B5838D, #FFCDD2);
             animation-delay: -4s;
             animation-duration: 9s;
         }
@@ -67,19 +69,19 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        .img-rounded { border-radius: 1.5rem 1.5rem 0.5rem 0.5rem; }
+        .img-rounded { border-radius: 1rem 1rem 0 0; }
         .btn-round { border-radius: 9999px; transition: all 0.3s ease; }
         
         .hide { display: none; }
@@ -101,155 +103,338 @@
     <header class="sticky top-4 z-50 mx-4 sm:mx-8">
         <div class="glass-card px-6 py-4 flex justify-between items-center shadow-sm">
             <div class="flex-shrink-0">
-                <h1 class="text-3xl font-bold text-pink-500 tracking-wide">Stef.Sewing</h1>
+                <a href="#accueil">
+                    <h1 class="text-2xl sm:text-3xl font-bold text-[#6D8A68] tracking-wide font-round hover:text-[#526e4e] transition">Stef.Sewing</h1>
+                </a>
             </div>
             <nav class="hidden md:flex space-x-6 font-semibold text-gray-600">
-                <a href="#accueil" class="hover:text-pink-500 transition">Accueil</a>
-                <a href="#boutique" class="hover:text-pink-500 transition">Boutique</a>
+                <a href="#accueil" class="hover:text-[#6D8A68] transition">Accueil</a>
+                <a href="#boutique" class="hover:text-[#6D8A68] transition">Boutique</a>
+                <a href="#concept" class="hover:text-[#6D8A68] transition">Le Concept</a>
+                <a href="#contact" class="hover:text-[#6D8A68] transition">Contact & FAQ</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <a href="https://instagram.com/stef.sewing" target="_blank" class="text-gray-500 hover:text-pink-500 transition flex items-center gap-1 font-semibold">
+                <a href="https://instagram.com/stef.sewing" target="_blank" aria-label="Instagram" class="text-gray-500 hover:text-[#6D8A68] transition flex items-center gap-1 font-semibold">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                 </a>
-                <button class="relative bg-white p-2 rounded-full shadow-sm text-pink-500 hover:bg-pink-50 transition">
+                <button class="relative bg-white p-2 rounded-full shadow-sm text-[#6D8A68] hover:bg-[#F2F6F1] transition" aria-label="Panier">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-blue-400 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-[#D4A373] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <section id="accueil" class="pt-24 pb-16 px-4 sm:px-6 text-center flex flex-col items-center">
-        <span class="bg-white/60 text-pink-600 px-4 py-1 rounded-full text-sm font-bold mb-6 border border-pink-200">✨ Fait main avec amour</span>
-        <h2 class="text-4xl sm:text-6xl font-bold text-gray-800 mb-6 drop-shadow-sm">Sacs, Bananes <br><span class="text-pink-500">& Bijoux</span></h2>
-        <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl font-medium">
-            Des créations artisanales colorées. Trouvez la pièce unique qui fera pétiller votre quotidien !
-        </p>
-        <a href="#boutique" class="btn-round bg-pink-500 text-white text-lg font-bold px-8 py-4 shadow-lg hover:bg-pink-600 hover:shadow-xl hover:-translate-y-1 transform">
-            Voir les créations 🛍️
-        </a>
-    </section>
-
-    <section id="boutique" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto w-full">
-        <div class="text-center mb-12">
-            <h3 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-800">La Boutique</h3>
+    <main>
+        <!-- Section Accueil -->
+        <section id="accueil" class="pt-24 pb-16 px-4 sm:px-6 text-center flex flex-col items-center">
+            <span class="bg-white/80 text-[#6D8A68] px-4 py-1 rounded-full text-sm font-bold mb-6 border border-[#6D8A68]/30 shadow-sm">🌿 Mode Éthique & Artisanale</span>
+            <h2 class="text-4xl sm:text-6xl font-bold text-gray-800 mb-6 drop-shadow-sm font-round">Sacs uniques et <br><span class="text-[#D4A373]">éco-responsables</span> issus de l'upcycling</h2>
+            <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl font-medium">
+                Chaque pièce est fabriquée à la main à partir de textiles revalorisés. Adoptez un style unique tout en préservant la planète.
+            </p>
+            <a href="#boutique" class="btn-round bg-[#6D8A68] text-white text-lg font-bold px-8 py-4 shadow-lg hover:bg-[#526e4e] hover:shadow-xl hover:-translate-y-1 transform">
+                Explorer la boutique
+            </a>
             
-            <div class="flex flex-wrap justify-center gap-3" id="filters">
-                <button class="filter-btn active btn-round px-5 py-2 font-bold bg-pink-500 text-white shadow-md" data-filter="all">Tout</button>
-                <button class="filter-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-pink-100 hover:text-pink-500 shadow-sm border border-gray-100" data-filter="couture">Sacs & Bananes 🧵</button>
-                <button class="filter-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-blue-100 hover:text-blue-500 shadow-sm border border-gray-100" data-filter="bijoux">Bijoux ✨</button>
+            <!-- Preuve Sociale Accueil -->
+            <div class="mt-16 max-w-3xl flex flex-col sm:flex-row gap-6 text-left">
+                <div class="glass-card p-6 flex-1">
+                    <div class="flex text-[#D4A373] mb-2">★★★★★</div>
+                    <p class="italic text-gray-600 text-sm">"Ma banane upcycling est tout simplement parfaite. On sent la qualité du travail artisanal et le tissu est magnifique. C'est ma pièce unique préférée !"</p>
+                    <p class="mt-2 font-bold text-sm text-gray-800">- Léa M.</p>
+                </div>
+                <div class="glass-card p-6 flex-1">
+                    <div class="flex text-[#D4A373] mb-2">★★★★★</div>
+                    <p class="italic text-gray-600 text-sm">"J'adore ma besace en tissu recyclé. Belle, pratique et surtout responsable. L'envoi a été très rapide et soigné. Je recommande à 100%."</p>
+                    <p class="mt-2 font-bold text-sm text-gray-800">- Sophie T.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- Section Boutique -->
+        <section id="boutique" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto w-full">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 font-round">La Boutique</h3>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Trouvez votre bonheur parmi nos créations artisanales. Filtrez par matière d'origine pour un choix qui vous ressemble.</p>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-6" id="category-filters">
+                    <button class="cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md" data-category="all">Toutes les pièces</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="bananes">Bananes</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="besaces">Besaces</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="trousses">Trousses</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="sacs">Sacs</button>
+                </div>
+
+                <!-- Material Filters -->
+                <div class="flex flex-wrap justify-center gap-2" id="material-filters">
+                    <span class="text-sm font-semibold text-gray-500 self-center mr-2">Filtrer par matière :</span>
+                    <button class="mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm" data-material="all">Toutes</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="jean">Jean recyclé</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="velours">Velours vintage</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="coton">Coton revalorisé</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+
+                <div class="glass-card p-4 group" data-category="bananes" data-material="jean">
+                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Banane upcycling artisanale en jean" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Pièce Unique</div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Jean Recyclé</span>
+                        <h4 class="text-lg font-bold text-gray-800">Banane "Denim Blue"</h4>
+                        <p class="text-gray-500 text-sm mb-3">Banane upcycling artisanale fabriquée à partir d'anciens jeans.</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xl font-bold text-gray-800">45€</span>
+                            <button onclick="addToCart('Banane Denim Blue', 45)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 group" data-category="besaces" data-material="velours">
+                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Besace tissu recyclé en velours" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Zéro Déchet</div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Velours Vintage</span>
+                        <h4 class="text-lg font-bold text-gray-800">Besace "Automne"</h4>
+                        <p class="text-gray-500 text-sm mb-3">Besace en tissu recyclé, idéale pour le quotidien, anse réglable.</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xl font-bold text-gray-800">65€</span>
+                            <button onclick="addToCart('Besace Automne', 65)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 group" data-category="trousses" data-material="coton">
+                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
+                        <img src="https://images.unsplash.com/photo-1628147171488-874dbd3d2db7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trousse upcyclée motif floral" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Pièce Unique</div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Coton Revalorisé</span>
+                        <h4 class="text-lg font-bold text-gray-800">Trousse "Flora"</h4>
+                        <p class="text-gray-500 text-sm mb-3">Trousse multi-usages, intérieur imperméable, chutes de tissus.</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xl font-bold text-gray-800">22€</span>
+                            <button onclick="addToCart('Trousse Flora', 22)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 group" data-category="sacs" data-material="jean">
+                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sac cabas upcyclé" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Zéro Déchet</div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Jean Recyclé</span>
+                        <h4 class="text-lg font-bold text-gray-800">Sac Cabas "Océan"</h4>
+                        <p class="text-gray-500 text-sm mb-3">Grand sac cabas robuste, assemblage de divers denims upcyclés.</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xl font-bold text-gray-800">55€</span>
+                            <button onclick="addToCart('Sac Cabas Océan', 55)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section Le Concept / À Propos -->
+        <section id="concept" class="py-16 px-4 sm:px-6 bg-white/40">
+            <div class="max-w-5xl mx-auto">
+                <h3 class="text-3xl sm:text-4xl font-bold mb-10 text-center text-gray-800 font-round">Notre Démarche Éthique</h3>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisanat couture upcycling" class="rounded-2xl shadow-lg w-full h-80 object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-[#6D8A68] mb-4">L'histoire d'un artisanat passionné</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Stef.Sewing est né d'une volonté simple : allier la passion de la couture à un engagement profond pour l'environnement. Face à l'industrie de la "fast fashion", nous avons choisi de ralentir. Chaque création est pensée, découpée et cousue à la main dans notre atelier, avec une attention particulière portée aux détails et aux finitions.
+                        </p>
+                        <h4 class="text-xl font-bold text-[#D4A373] mb-3">Transparence & Processus Zéro Déchet</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            Nous offrons une seconde vie aux vieux vêtements (jeans, vestes en velours, draps anciens) voués à l'abandon. Ce processus d'upcycling nous permet de créer des sacs et accessoires véritablement uniques. Les moindres chutes de tissus sont réutilisées pour de petites créations ou le rembourrage, s'inscrivant ainsi dans une démarche 100% zéro déchet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact & FAQ -->
+        <section id="contact" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto w-full">
+            <h3 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-gray-800 font-round">Contact & Informations Pratiques</h3>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Formulaire de contact -->
+                <div class="glass-card p-8">
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">Nous écrire</h4>
+                    <form onsubmit="event.preventDefault(); alert('Message envoyé avec succès !'); this.reset();" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                            <input type="text" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-round bg-[#6D8A68] text-white font-bold py-3 hover:bg-[#526e4e] transition shadow-md">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- FAQ (Accordéon) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">Questions fréquentes</h4>
+                    <div class="space-y-4">
+
+                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-1')">
+                            <div class="flex justify-between items-center font-bold text-gray-800">
+                                <span>📦 Politique d'expédition</span>
+                                <span class="text-[#D4A373] text-xl" id="icon-1">+</span>
+                            </div>
+                            <div id="faq-1" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
+                                Les commandes sont préparées et expédiées sous 3 à 5 jours ouvrés. L'envoi se fait par Colissimo suivi ou Mondial Relay, dans un emballage éco-responsable et recyclé.
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-2')">
+                            <div class="flex justify-between items-center font-bold text-gray-800">
+                                <span>↩️ Conditions de retours</span>
+                                <span class="text-[#D4A373] text-xl" id="icon-2">+</span>
+                            </div>
+                            <div id="faq-2" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
+                                Vous disposez de 14 jours après réception pour retourner un article non porté et non lavé. S'agissant de pièces uniques, les frais de retour sont à la charge de l'acheteur.
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-3')">
+                            <div class="flex justify-between items-center font-bold text-gray-800">
+                                <span>🧼 Conseils d'entretien</span>
+                                <span class="text-[#D4A373] text-xl" id="icon-3">+</span>
+                            </div>
+                            <div id="faq-3" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
+                                Nos créations textiles upcyclées sont précieuses. Nous recommandons un lavage à la main ou en machine à 30°C maximum en cycle délicat. Évitez le sèche-linge pour préserver les fibres et les couleurs.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-auto bg-white/60 backdrop-blur-md rounded-t-[2rem] pt-12 pb-8 border-t border-white text-center shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]">
+        <h2 class="text-2xl font-bold text-[#6D8A68] mb-3 font-round">Stef.Sewing</h2>
+        <p class="text-gray-600 mb-6 text-sm font-medium">Sacs uniques & éco-responsables issus de l'upcycling.</p>
+        <div class="flex justify-center gap-4 mb-6">
+            <a href="#" class="text-gray-500 hover:text-[#6D8A68] text-sm font-semibold transition">Mentions légales</a>
+            <span class="text-gray-300">|</span>
+            <a href="#" class="text-gray-500 hover:text-[#6D8A68] text-sm font-semibold transition">CGV</a>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
-            
-            <div class="glass-card p-4 group" data-category="couture">
-                <div class="relative h-56 mb-4 overflow-hidden img-rounded">
-                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Banane" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <span class="text-[10px] font-bold text-pink-500 uppercase bg-pink-100 px-2 py-1 rounded-full mb-2 inline-block">Couture</span>
-                    <h4 class="text-lg font-bold text-gray-800">Banane "Savane"</h4>
-                    <p class="text-gray-500 text-sm mb-3">Motif animalier</p>
-                    <div class="flex justify-between items-center mt-2">
-                        <span class="text-xl font-bold text-gray-800">45€</span>
-                        <button onclick="addToCart('Banane Savane')" class="btn-round bg-blue-400 text-white w-9 h-9 flex items-center justify-center hover:bg-blue-500 shadow-md">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-4 group" data-category="bijoux">
-                <div class="relative h-56 mb-4 overflow-hidden img-rounded bg-white/50">
-                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Boucles d'oreilles" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <span class="text-[10px] font-bold text-blue-500 uppercase bg-blue-100 px-2 py-1 rounded-full mb-2 inline-block">Bijoux</span>
-                    <h4 class="text-lg font-bold text-gray-800">Boucles "Perles"</h4>
-                    <p class="text-gray-500 text-sm mb-3">Acier inoxydable</p>
-                    <div class="flex justify-between items-center mt-2">
-                        <span class="text-xl font-bold text-gray-800">22€</span>
-                        <button onclick="addToCart('Boucles Perles')" class="btn-round bg-blue-400 text-white w-9 h-9 flex items-center justify-center hover:bg-blue-500 shadow-md">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-4 group" data-category="couture">
-                <div class="relative h-56 mb-4 overflow-hidden img-rounded">
-                    <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Besace" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <span class="text-[10px] font-bold text-pink-500 uppercase bg-pink-100 px-2 py-1 rounded-full mb-2 inline-block">Couture</span>
-                    <h4 class="text-lg font-bold text-gray-800">Cabas Fleuri</h4>
-                    <p class="text-gray-500 text-sm mb-3">Tissu matelassé</p>
-                    <div class="flex justify-between items-center mt-2">
-                        <span class="text-xl font-bold text-gray-800">65€</span>
-                        <button onclick="addToCart('Cabas Fleuri')" class="btn-round bg-blue-400 text-white w-9 h-9 flex items-center justify-center hover:bg-blue-500 shadow-md">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-4 group" data-category="bijoux">
-                <div class="relative h-56 mb-4 overflow-hidden img-rounded bg-white/50">
-                    <img src="https://images.unsplash.com/photo-1599643478514-4a4e0f152336?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Collier" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <span class="text-[10px] font-bold text-blue-500 uppercase bg-blue-100 px-2 py-1 rounded-full mb-2 inline-block">Bijoux</span>
-                    <h4 class="text-lg font-bold text-gray-800">Collier "Soleil"</h4>
-                    <p class="text-gray-500 text-sm mb-3">Pendentif doré</p>
-                    <div class="flex justify-between items-center mt-2">
-                        <span class="text-xl font-bold text-gray-800">28€</span>
-                        <button onclick="addToCart('Collier Soleil')" class="btn-round bg-blue-400 text-white w-9 h-9 flex items-center justify-center hover:bg-blue-500 shadow-md">+</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="mt-auto bg-white/50 backdrop-blur-md rounded-t-[2rem] pt-10 pb-6 border-t border-white text-center">
-        <h2 class="text-2xl font-bold text-pink-500 mb-2">Stef.Sewing</h2>
-        <p class="text-gray-600 mb-4 text-sm font-medium">Couture & Bijoux.</p>
-        <p class="text-xs text-gray-500">&copy; 2026 Stef.Sewing.</p>
+        <p class="text-xs text-gray-400">&copy; 2026 Stef.Sewing. Tous droits réservés.</p>
     </footer>
 
     <script>
-        const filterBtns = document.querySelectorAll('.filter-btn');
+        // Filtering logic
+        const catBtns = document.querySelectorAll('.cat-btn');
+        const matBtns = document.querySelectorAll('.mat-btn');
         const products = document.querySelectorAll('.glass-card[data-category]');
 
-        filterBtns.forEach(btn => {
+        let currentCat = 'all';
+        let currentMat = 'all';
+
+        function applyFilters() {
+            products.forEach(product => {
+                const productCat = product.getAttribute('data-category');
+                const productMat = product.getAttribute('data-material');
+
+                const matchCat = currentCat === 'all' || productCat === currentCat;
+                const matchMat = currentMat === 'all' || productMat === currentMat;
+
+                if (matchCat && matchMat) {
+                    product.classList.remove('hide');
+                    product.style.animation = 'none';
+                    product.offsetHeight; // trigger reflow
+                    product.classList.add('fade-in');
+                } else {
+                    product.classList.add('hide');
+                }
+            });
+        }
+
+        catBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => { b.className = 'filter-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-pink-100 hover:text-pink-500 shadow-sm border border-gray-100'; });
-                btn.className = 'filter-btn active btn-round px-5 py-2 font-bold bg-pink-500 text-white shadow-md';
-                const filterValue = btn.getAttribute('data-filter');
-                products.forEach(product => {
-                    if (filterValue === 'all' || product.getAttribute('data-category') === filterValue) {
-                        product.classList.remove('hide');
-                        product.style.animation = 'none';
-                        product.offsetHeight; 
-                        product.classList.add('fade-in');
-                    } else {
-                        product.classList.add('hide');
-                    }
+                catBtns.forEach(b => {
+                    b.className = 'cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100';
                 });
+                btn.className = 'cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md';
+                currentCat = btn.getAttribute('data-category');
+                applyFilters();
             });
         });
 
+        matBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                matBtns.forEach(b => {
+                    b.className = 'mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100';
+                });
+                btn.className = 'mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm';
+                currentMat = btn.getAttribute('data-material');
+                applyFilters();
+            });
+        });
+
+        // Cart logic
         let cartItemCount = 0;
-        window.addToCart = function(productName) {
+        let cartTotal = 0;
+        window.addToCart = function(productName, price) {
             const countEl = document.getElementById('cart-count');
-            countEl.innerText = ++cartItemCount;
+            cartItemCount++;
+            cartTotal += price;
+            countEl.innerText = cartItemCount;
             countEl.classList.add('scale-125');
             setTimeout(() => countEl.classList.remove('scale-125'), 200);
 
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-2 rounded-full shadow-xl z-50 fade-in text-sm font-bold';
-            toast.innerHTML = `🛍️ ${productName} ajouté`;
+            toast.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-2xl z-50 fade-in text-sm font-bold flex items-center gap-2';
+            toast.innerHTML = `<span>🛍️ Ajouté : ${productName}</span> <span class="bg-white text-gray-800 px-2 py-0.5 rounded-full text-xs">Total: ${cartTotal}€</span>`;
             document.body.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transition = 'all 0.5s ease';
                 setTimeout(() => toast.remove(), 500);
-            }, 1500);
+            }, 2500);
+        };
+
+        // FAQ logic
+        window.toggleFaq = function(id) {
+            const el = document.getElementById(id);
+            const iconId = id.replace('faq', 'icon');
+            const iconEl = document.getElementById(iconId);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('fade-in');
+                iconEl.innerText = '-';
+            } else {
+                el.classList.add('hidden');
+                iconEl.innerText = '+';
+            }
         };
     </script>
 </body>
