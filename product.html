@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sacs uniques et éco-responsables issus de l'upcycling. Découvrez nos bananes upcycling artisanales et besaces en tissu recyclé fabriquées à la main.">
+    <meta name="keywords" content="upcycling, banane upcycling artisanale, besace tissu recyclé, sac éco-responsable, zéro déchet, artisanat textile">
+    <title>Stef.Sewing - Sacs uniques & éco-responsables (Upcycling)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fdf8f5;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5, .font-round {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .bg-blobs {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #fcf9f5; /* more natural earth tone for eco-friendly */
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            animation: morph 8s ease-in-out infinite alternate;
+            opacity: 0.25;
+        }
+
+        .blob-1 {
+            top: -5%; left: -10%;
+            width: 350px; height: 350px;
+            background: linear-gradient(135deg, #A8C9A7, #E0EACD);
+            animation-duration: 12s;
+        }
+
+        .blob-2 {
+            bottom: -5%; right: -10%;
+            width: 300px; height: 300px;
+            background: linear-gradient(135deg, #D4A373, #FAEDCB);
+            animation-delay: -2s;
+            animation-duration: 10s;
+        }
+
+        .blob-3 {
+            top: 30%; left: 40%;
+            width: 250px; height: 250px;
+            background: linear-gradient(135deg, #B5838D, #FFCDD2);
+            animation-delay: -4s;
+            animation-duration: 9s;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            100% {
+                border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+                transform: translate(8vw, 8vh) rotate(25deg) scale(1.1);
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .img-rounded { border-radius: 1rem 1rem 0 0; }
+        .btn-round { border-radius: 9999px; transition: all 0.3s ease; }
+
+        .hide { display: none; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen relative">
+
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="sticky top-4 z-50 mx-4 sm:mx-8">
+        <div class="glass-card px-6 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex-shrink-0">
+                <a href="index.html#accueil">
+                    <h1 class="text-2xl sm:text-3xl font-bold text-[#6D8A68] tracking-wide font-round hover:text-[#526e4e] transition">Stef.Sewing</h1>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-6 font-semibold text-gray-600">
+                <a href="index.html#accueil" class="hover:text-[#6D8A68] transition">Accueil</a>
+                <a href="index.html#boutique" class="hover:text-[#6D8A68] transition">Boutique</a>
+                <a href="index.html#concept" class="hover:text-[#6D8A68] transition">Le Concept</a>
+                <a href="index.html#contact" class="hover:text-[#6D8A68] transition">Contact & FAQ</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="https://instagram.com/stef.sewing" target="_blank" aria-label="Instagram" class="text-gray-500 hover:text-[#6D8A68] transition flex items-center gap-1 font-semibold">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <button class="relative bg-white p-2 rounded-full shadow-sm text-[#6D8A68] hover:bg-[#F2F6F1] transition" aria-label="Panier">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-[#D4A373] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="product-detail" class="py-24 px-4 sm:px-6 max-w-5xl mx-auto w-full">
+            <div id="product-container" class="glass-card p-8 grid md:grid-cols-2 gap-12 hide">
+                <div class="h-96 md:h-auto overflow-hidden rounded-xl">
+                    <img id="prod-img" src="" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span id="prod-cat" class="text-sm font-bold text-[#6D8A68] uppercase mb-2"></span>
+                    <h1 id="prod-name" class="text-4xl font-bold text-gray-800 font-round mb-4"></h1>
+                    <p id="prod-desc" class="text-gray-600 mb-8 leading-relaxed"></p>
+                    <div class="flex items-center gap-6 mt-auto">
+                        <span id="prod-price" class="text-3xl font-bold text-gray-800"></span>
+                        <button id="add-btn" class="btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="loading" class="text-center py-20 text-gray-500 font-bold">Chargement...</div>
+        </section>
+
+        <!-- Section Accueil -->
+
+
+        <!-- Section Boutique -->
+
+
+        <!-- Section Le Concept / À Propos -->
+
+
+        <!-- Section Contact & FAQ -->
+
+
+    </main>
+
+    <footer class="mt-auto bg-white/60 backdrop-blur-md rounded-t-[2rem] pt-12 pb-8 border-t border-white text-center shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]">
+        <h2 class="text-2xl font-bold text-[#6D8A68] mb-3 font-round">Stef.Sewing</h2>
+        <p class="text-gray-600 mb-6 text-sm font-medium">Sacs uniques & éco-responsables issus de l'upcycling.</p>
+        <div class="flex justify-center gap-4 mb-6">
+            <a href="#" class="text-gray-500 hover:text-[#6D8A68] text-sm font-semibold transition">Mentions légales</a>
+            <span class="text-gray-300">|</span>
+            <a href="#" class="text-gray-500 hover:text-[#6D8A68] text-sm font-semibold transition">CGV</a>
+        </div>
+        <p class="text-xs text-gray-400">&copy; 2026 Stef.Sewing. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Filtering logic
+        const catBtns = document.querySelectorAll('.cat-btn');
+        const matBtns = document.querySelectorAll('.mat-btn');
+
+
+        let currentCat = 'all';
+        let currentMat = 'all';
+
+        function applyFilters() {
+            const products = document.querySelectorAll('.glass-card[data-category]');
+            products.forEach(product => {
+                const productCat = product.getAttribute('data-category');
+                const productMat = product.getAttribute('data-material');
+
+                const matchCat = currentCat === 'all' || productCat === currentCat;
+                const matchMat = currentMat === 'all' || productMat === currentMat;
+
+                if (matchCat && matchMat) {
+                    product.classList.remove('hide');
+                    product.style.animation = 'none';
+                    product.offsetHeight; // trigger reflow
+                    product.classList.add('fade-in');
+                } else {
+                    product.classList.add('hide');
+                }
+            });
+        }
+
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catBtns.forEach(b => {
+                    b.className = 'cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100';
+                });
+                btn.className = 'cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md';
+                currentCat = btn.getAttribute('data-category');
+                applyFilters();
+            });
+        });
+
+        matBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                matBtns.forEach(b => {
+                    b.className = 'mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100';
+                });
+                btn.className = 'mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm';
+                currentMat = btn.getAttribute('data-material');
+                applyFilters();
+            });
+        });
+
+        // Cart logic
+        let cartItemCount = 0;
+        let cartTotal = 0;
+        window.addToCart = function(productName, price) {
+            const countEl = document.getElementById('cart-count');
+            cartItemCount++;
+            cartTotal += price;
+            countEl.innerText = cartItemCount;
+            countEl.classList.add('scale-125');
+            setTimeout(() => countEl.classList.remove('scale-125'), 200);
+
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-2xl z-50 fade-in text-sm font-bold flex items-center gap-2';
+            toast.innerHTML = `<span>🛍️ Ajouté : ${productName}</span> <span class="bg-white text-gray-800 px-2 py-0.5 rounded-full text-xs">Total: ${cartTotal}€</span>`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'all 0.5s ease';
+                setTimeout(() => toast.remove(), 500);
+            }, 2500);
+        };
+
+        // FAQ logic
+        window.toggleFaq = function(id) {
+            const el = document.getElementById(id);
+            const iconId = id.replace('faq', 'icon');
+            const iconEl = document.getElementById(iconId);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('fade-in');
+                iconEl.innerText = '-';
+            } else {
+                el.classList.add('hidden');
+                iconEl.innerText = '+';
+            }
+        };
+    </script>
+
+<script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY/export?format=csv';
+
+    function parseCSV(str) {
+        const arr = [];
+        let quote = false;
+        for (let row = 0, col = 0, c = 0; c < str.length; c++) {
+            let cc = str[c], nc = str[c+1];
+            arr[row] = arr[row] || [];
+            arr[row][col] = arr[row][col] || '';
+
+            if (cc == '"' && quote && nc == '"') {
+                arr[row][col] += cc; ++c; continue;
+            }
+            if (cc == '"') {
+                quote = !quote; continue;
+            }
+            if (cc == ',' && !quote) {
+                ++col; continue;
+            }
+            if (cc == '\r' && nc == '\n' && !quote) {
+                ++row; col = 0; ++c; continue;
+            }
+            if (cc == '\n' && !quote) {
+                ++row; col = 0; continue;
+            }
+            if (cc == '\r' && !quote) {
+                ++row; col = 0; continue;
+            }
+            arr[row][col] += cc;
+        }
+        return arr;
+    }
+
+    </script>
+
+
+<script>
+    async function loadProductDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sku = urlParams.get('sku');
+        if (!sku) {
+            document.getElementById('loading').innerText = 'Produit non trouvé.';
+            return;
+        }
+
+        try {
+            const response = await fetch(CSV_URL, { redirect: 'follow' });
+            const text = await response.text();
+            const data = parseCSV(text);
+            const headers = data[0];
+            const products = data.slice(1).map(row => {
+                let obj = {};
+                headers.forEach((h, i) => obj[h.trim()] = row[i]);
+                return obj;
+            });
+
+            const product = products.find(p => p['Identifiant (SKU)'] === sku);
+
+            if (product) {
+                document.getElementById('loading').classList.add('hide');
+                document.getElementById('product-container').classList.remove('hide');
+                document.getElementById('product-container').classList.add('fade-in');
+
+                document.getElementById('prod-img').src = product['imageUrl'];
+                document.getElementById('prod-img').alt = product['Nom du produit'];
+                document.getElementById('prod-cat').innerText = product['Catégorie'];
+                document.getElementById('prod-name').innerText = product['Nom du produit'];
+                document.getElementById('prod-desc').innerText = product['Description longue'] || product['Description courte'];
+                document.getElementById('prod-price').innerText = product['Prix'] + '€';
+
+                let prixVal = parseFloat((product['Prix'] || '0').replace(',','.'));
+                let pName = product['Nom du produit'].replace(/'/g, "&#39;");
+
+                document.getElementById('add-btn').onclick = function() {
+                    if (typeof addToCart === 'function') {
+                        addToCart(pName, prixVal);
+                    }
+                };
+            } else {
+                document.getElementById('loading').innerText = 'Produit non trouvé.';
+            }
+        } catch (e) {
+            console.error(e);
+            document.getElementById('loading').innerText = 'Erreur lors du chargement.';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProductDetail);
+</script>
+
+</body>
+</html>

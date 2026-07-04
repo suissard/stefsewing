@@ -178,73 +178,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
-
-                <div class="glass-card p-4 group" data-category="bananes" data-material="jean">
-                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
-                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Banane upcycling artisanale en jean" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Pièce Unique</div>
-                    </div>
-                    <div class="px-2">
-                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Jean Recyclé</span>
-                        <h4 class="text-lg font-bold text-gray-800">Banane "Denim Blue"</h4>
-                        <p class="text-gray-500 text-sm mb-3">Banane upcycling artisanale fabriquée à partir d'anciens jeans.</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-xl font-bold text-gray-800">45€</span>
-                            <button onclick="addToCart('Banane Denim Blue', 45)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-4 group" data-category="besaces" data-material="velours">
-                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
-                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Besace tissu recyclé en velours" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Zéro Déchet</div>
-                    </div>
-                    <div class="px-2">
-                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Velours Vintage</span>
-                        <h4 class="text-lg font-bold text-gray-800">Besace "Automne"</h4>
-                        <p class="text-gray-500 text-sm mb-3">Besace en tissu recyclé, idéale pour le quotidien, anse réglable.</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-xl font-bold text-gray-800">65€</span>
-                            <button onclick="addToCart('Besace Automne', 65)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-4 group" data-category="trousses" data-material="coton">
-                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
-                        <img src="https://images.unsplash.com/photo-1628147171488-874dbd3d2db7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trousse upcyclée motif floral" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Pièce Unique</div>
-                    </div>
-                    <div class="px-2">
-                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Coton Revalorisé</span>
-                        <h4 class="text-lg font-bold text-gray-800">Trousse "Flora"</h4>
-                        <p class="text-gray-500 text-sm mb-3">Trousse multi-usages, intérieur imperméable, chutes de tissus.</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-xl font-bold text-gray-800">22€</span>
-                            <button onclick="addToCart('Trousse Flora', 22)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-4 group" data-category="sacs" data-material="jean">
-                    <div class="relative h-64 mb-4 overflow-hidden img-rounded">
-                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sac cabas upcyclé" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">Zéro Déchet</div>
-                    </div>
-                    <div class="px-2">
-                        <span class="text-[10px] font-bold text-gray-600 uppercase bg-gray-100 px-2 py-1 rounded-full mb-2 inline-block">Jean Recyclé</span>
-                        <h4 class="text-lg font-bold text-gray-800">Sac Cabas "Océan"</h4>
-                        <p class="text-gray-500 text-sm mb-3">Grand sac cabas robuste, assemblage de divers denims upcyclés.</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-xl font-bold text-gray-800">55€</span>
-                            <button onclick="addToCart('Sac Cabas Océan', 55)" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
         </section>
 
         <!-- Section Le Concept / À Propos -->
@@ -354,12 +288,13 @@
         // Filtering logic
         const catBtns = document.querySelectorAll('.cat-btn');
         const matBtns = document.querySelectorAll('.mat-btn');
-        const products = document.querySelectorAll('.glass-card[data-category]');
+
 
         let currentCat = 'all';
         let currentMat = 'all';
 
         function applyFilters() {
+            const products = document.querySelectorAll('.glass-card[data-category]');
             products.forEach(product => {
                 const productCat = product.getAttribute('data-category');
                 const productMat = product.getAttribute('data-material');
@@ -437,5 +372,93 @@
             }
         };
     </script>
+
+<script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY/export?format=csv';
+
+    function parseCSV(str) {
+        const arr = [];
+        let quote = false;
+        for (let row = 0, col = 0, c = 0; c < str.length; c++) {
+            let cc = str[c], nc = str[c+1];
+            arr[row] = arr[row] || [];
+            arr[row][col] = arr[row][col] || '';
+
+            if (cc == '"' && quote && nc == '"') {
+                arr[row][col] += cc; ++c; continue;
+            }
+            if (cc == '"') {
+                quote = !quote; continue;
+            }
+            if (cc == ',' && !quote) {
+                ++col; continue;
+            }
+            if (cc == '\r' && nc == '\n' && !quote) {
+                ++row; col = 0; ++c; continue;
+            }
+            if (cc == '\n' && !quote) {
+                ++row; col = 0; continue;
+            }
+            if (cc == '\r' && !quote) {
+                ++row; col = 0; continue;
+            }
+            arr[row][col] += cc;
+        }
+        return arr;
+    }
+
+    async function loadProducts() {
+        try {
+            const response = await fetch(CSV_URL, { redirect: 'follow' });
+            const text = await response.text();
+            const data = parseCSV(text);
+            const headers = data[0];
+            const products = data.slice(1).map(row => {
+                let obj = {};
+                headers.forEach((h, i) => obj[h.trim()] = row[i]);
+                return obj;
+            }).filter(p => p['Identifiant (SKU)']);
+
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(p => {
+                let catFilter = p['Catégorie'] ? p['Catégorie'].toLowerCase() : '';
+                let matFilter = 'all';
+
+                const card = document.createElement('div');
+                card.className = 'glass-card p-4 group fade-in';
+                card.setAttribute('data-category', catFilter);
+                card.setAttribute('data-material', matFilter);
+
+                let prixVal = p['Prix'] ? parseFloat(p['Prix'].replace(',','.')) || 0 : 0;
+                let productName = p['Nom du produit'] ? p['Nom du produit'].replace(/'/g, "&#39;") : '';
+                let priceStr = p['Prix'] || '0';
+
+                card.innerHTML = `
+                    <a href="product.html?sku=${encodeURIComponent(p['Identifiant (SKU)'])}" class="block relative h-64 mb-4 overflow-hidden img-rounded">
+                        <img src="${p['imageUrl']}" alt="${productName}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-full text-[#6D8A68]">${p['Catégorie']}</div>
+                    </a>
+                    <div class="px-2">
+                        <a href="product.html?sku=${encodeURIComponent(p['Identifiant (SKU)'])}"><h4 class="text-lg font-bold text-gray-800 hover:text-[#6D8A68] transition">${productName}</h4></a>
+                        <p class="text-gray-500 text-sm mb-3">${p['Description courte']}</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xl font-bold text-gray-800">${priceStr}€</span>
+                            <button onclick="addToCart('${productName}', ${prixVal})" class="btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition">+</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            if(typeof applyFilters === 'function') applyFilters();
+        } catch (e) {
+            console.error('Failed to load products', e);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProducts);
+</script>
+
 </body>
 </html>
