@@ -18,7 +18,7 @@
         h1, h2, h3, h4, h5, .font-round {
             font-family: 'Fredoka', sans-serif;
         }
-        
+
         .bg-blobs {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -27,7 +27,7 @@
             background-color: #fcf9f5; /* more natural earth tone for eco-friendly */
             pointer-events: none;
         }
-        
+
         .blob {
             position: absolute;
             animation: morph 8s ease-in-out infinite alternate;
@@ -83,13 +83,25 @@
 
         .img-rounded { border-radius: 1rem 1rem 0 0; }
         .btn-round { border-radius: 9999px; transition: all 0.3s ease; }
-        
+
         .hide { display: none; }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 1rem;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
 
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -115,15 +127,15 @@
     <header class="sticky top-4 z-50 mx-4 sm:mx-8">
         <div class="glass-card px-6 py-4 flex justify-between items-center shadow-sm">
             <div class="flex-shrink-0">
-                <a href="#accueil">
+                <a href="index.html#accueil">
                     <h1 class="text-2xl sm:text-3xl font-bold text-[#6D8A68] tracking-wide font-round hover:text-[#526e4e] transition">Stef.Sewing</h1>
                 </a>
             </div>
             <nav class="hidden md:flex space-x-6 font-semibold text-gray-600">
-                <a href="#accueil" class="hover:text-[#6D8A68] transition">Accueil</a>
-                <a href="boutique.html" class="hover:text-[#6D8A68] transition">Boutique</a>
-                <a href="#concept" class="hover:text-[#6D8A68] transition">Le Concept</a>
-                <a href="#contact" class="hover:text-[#6D8A68] transition">Contact & FAQ</a>
+                <a href="index.html#accueil" class="hover:text-[#6D8A68] transition">Accueil</a>
+                <a href="#boutique" class="hover:text-[#6D8A68] transition">Boutique</a>
+                <a href="index.html#concept" class="hover:text-[#6D8A68] transition">Le Concept</a>
+                <a href="index.html#contact" class="hover:text-[#6D8A68] transition">Contact & FAQ</a>
             </nav>
             <div class="flex items-center space-x-4">
                 <a href="https://instagram.com/stef.sewing" target="_blank" aria-label="Instagram" class="text-gray-500 hover:text-[#6D8A68] transition flex items-center gap-1 font-semibold">
@@ -139,30 +151,7 @@
 
     <main>
         <!-- Section Accueil -->
-        <section id="accueil" class="pt-24 pb-16 px-4 sm:px-6 text-center flex flex-col items-center">
-            <span class="bg-white/80 text-[#6D8A68] px-4 py-1 rounded-full text-sm font-bold mb-6 border border-[#6D8A68]/30 shadow-sm">🌿 Mode Éthique & Artisanale</span>
-            <h2 class="text-4xl sm:text-6xl font-bold text-gray-800 mb-6 drop-shadow-sm font-round">Sacs uniques et <br><span class="text-[#D4A373]">éco-responsables</span> issus de l'upcycling</h2>
-            <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl font-medium">
-                Chaque pièce est fabriquée à la main à partir de textiles revalorisés. Adoptez un style unique tout en préservant la planète.
-            </p>
-            <a href="boutique.html" class="btn-round bg-[#6D8A68] text-white text-lg font-bold px-8 py-4 shadow-lg hover:bg-[#526e4e] hover:shadow-xl hover:-translate-y-1 transform">
-                Explorer la boutique
-            </a>
-            
-            <!-- Preuve Sociale Accueil -->
-            <div class="mt-16 max-w-3xl flex flex-col sm:flex-row gap-6 text-left">
-                <div class="glass-card p-6 flex-1">
-                    <div class="flex text-[#D4A373] mb-2">★★★★★</div>
-                    <p class="italic text-gray-600 text-sm">"Ma banane upcycling est tout simplement parfaite. On sent la qualité du travail artisanal et le tissu est magnifique. C'est ma pièce unique préférée !"</p>
-                    <p class="mt-2 font-bold text-sm text-gray-800">- Léa M.</p>
-                </div>
-                <div class="glass-card p-6 flex-1">
-                    <div class="flex text-[#D4A373] mb-2">★★★★★</div>
-                    <p class="italic text-gray-600 text-sm">"J'adore ma besace en tissu recyclé. Belle, pratique et surtout responsable. L'envoi a été très rapide et soigné. Je recommande à 100%."</p>
-                    <p class="mt-2 font-bold text-sm text-gray-800">- Sophie T.</p>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Section Boutique -->
         <section id="boutique" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto w-full">
@@ -170,104 +159,34 @@
                 <h3 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 font-round">La Boutique</h3>
                 <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Trouvez votre bonheur parmi nos créations artisanales. Filtrez par matière d'origine pour un choix qui vous ressemble.</p>
 
-                <!-- Product Grid -->
+                <!-- Category Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-6" id="category-filters">
+                    <button class="cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md" data-category="all">Toutes les pièces</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="bananes">Bananes</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="besaces">Besaces</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="trousses">Trousses</button>
+                    <button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="sacs">Sacs</button>
+                </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
-            <div class="mt-12 text-center">
-                <a href="boutique.html" class="btn-round bg-[#6D8A68] text-white text-lg font-bold px-8 py-4 shadow-lg hover:bg-[#526e4e] hover:shadow-xl hover:-translate-y-1 transform inline-block">Voir toute la boutique</a>
+                <!-- Material Filters -->
+                <div class="flex flex-wrap justify-center gap-2" id="material-filters">
+                    <span class="text-sm font-semibold text-gray-500 self-center mr-2">Filtrer par matière :</span>
+                    <button class="mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm" data-material="all">Toutes</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="jean">Jean recyclé</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="velours">Velours vintage</button>
+                    <button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="coton">Coton revalorisé</button>
+                </div>
             </div>
 
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
         </section>
 
         <!-- Section Le Concept / À Propos -->
-        <section id="concept" class="py-16 px-4 sm:px-6 bg-white/40">
-            <div class="max-w-5xl mx-auto">
-                <h3 class="text-3xl sm:text-4xl font-bold mb-10 text-center text-gray-800 font-round">Notre Démarche Éthique</h3>
 
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisanat couture upcycling" class="rounded-2xl shadow-lg w-full h-80 object-cover">
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-bold text-[#6D8A68] mb-4">L'histoire d'un artisanat passionné</h4>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Stef.Sewing est né d'une volonté simple : allier la passion de la couture à un engagement profond pour l'environnement. Face à l'industrie de la "fast fashion", nous avons choisi de ralentir. Chaque création est pensée, découpée et cousue à la main dans notre atelier, avec une attention particulière portée aux détails et aux finitions.
-                        </p>
-                        <h4 class="text-xl font-bold text-[#D4A373] mb-3">Transparence & Processus Zéro Déchet</h4>
-                        <p class="text-gray-600 leading-relaxed">
-                            Nous offrons une seconde vie aux vieux vêtements (jeans, vestes en velours, draps anciens) voués à l'abandon. Ce processus d'upcycling nous permet de créer des sacs et accessoires véritablement uniques. Les moindres chutes de tissus sont réutilisées pour de petites créations ou le rembourrage, s'inscrivant ainsi dans une démarche 100% zéro déchet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Section Contact & FAQ -->
-        <section id="contact" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto w-full">
-            <h3 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-gray-800 font-round">Contact & Informations Pratiques</h3>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Formulaire de contact -->
-                <div class="glass-card p-8">
-                    <h4 class="text-2xl font-bold mb-6 text-gray-800">Nous écrire</h4>
-                    <form onsubmit="event.preventDefault(); alert('Message envoyé avec succès !'); this.reset();" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-                            <input type="text" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                            <textarea id="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#6D8A68] focus:border-[#6D8A68] outline-none transition"></textarea>
-                        </div>
-                        <button type="submit" class="w-full btn-round bg-[#6D8A68] text-white font-bold py-3 hover:bg-[#526e4e] transition shadow-md">
-                            Envoyer le message
-                        </button>
-                    </form>
-                </div>
-
-                <!-- FAQ (Accordéon) -->
-                <div>
-                    <h4 class="text-2xl font-bold mb-6 text-gray-800">Questions fréquentes</h4>
-                    <div class="space-y-4">
-
-                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-1')">
-                            <div class="flex justify-between items-center font-bold text-gray-800">
-                                <span>📦 Politique d'expédition</span>
-                                <span class="text-[#D4A373] text-xl" id="icon-1">+</span>
-                            </div>
-                            <div id="faq-1" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
-                                Les commandes sont préparées et expédiées sous 3 à 5 jours ouvrés. L'envoi se fait par Colissimo suivi ou Mondial Relay, dans un emballage éco-responsable et recyclé.
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-2')">
-                            <div class="flex justify-between items-center font-bold text-gray-800">
-                                <span>↩️ Conditions de retours</span>
-                                <span class="text-[#D4A373] text-xl" id="icon-2">+</span>
-                            </div>
-                            <div id="faq-2" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
-                                Vous disposez de 14 jours après réception pour retourner un article non porté et non lavé. S'agissant de pièces uniques, les frais de retour sont à la charge de l'acheteur.
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-4 cursor-pointer" onclick="toggleFaq('faq-3')">
-                            <div class="flex justify-between items-center font-bold text-gray-800">
-                                <span>🧼 Conseils d'entretien</span>
-                                <span class="text-[#D4A373] text-xl" id="icon-3">+</span>
-                            </div>
-                            <div id="faq-3" class="hidden mt-3 text-sm text-gray-600 leading-relaxed">
-                                Nos créations textiles upcyclées sont précieuses. Nous recommandons un lavage à la main ou en machine à 30°C maximum en cycle délicat. Évitez le sèche-linge pour préserver les fibres et les couleurs.
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </main>
 
@@ -284,12 +203,40 @@
 
     <script>
         // Filtering logic
-        const catBtns = document.querySelectorAll('.cat-btn');
-        const matBtns = document.querySelectorAll('.mat-btn');
+
 
 
         let currentCat = 'all';
         let currentMat = 'all';
+
+
+
+        function attachFilterListeners() {
+            const catBtns = document.querySelectorAll('.cat-btn');
+            const matBtns = document.querySelectorAll('.mat-btn');
+
+            catBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    catBtns.forEach(b => {
+                        b.className = 'cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100';
+                    });
+                    btn.className = 'cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md';
+                    currentCat = btn.getAttribute('data-category');
+                    applyFilters();
+                });
+            });
+
+            matBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    matBtns.forEach(b => {
+                        b.className = 'mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100';
+                    });
+                    btn.className = 'mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm';
+                    currentMat = btn.getAttribute('data-material');
+                    applyFilters();
+                });
+            });
+        }
 
         function applyFilters() {
             const products = document.querySelectorAll('.glass-card[data-category]');
@@ -310,28 +257,6 @@
                 }
             });
         }
-
-        catBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                catBtns.forEach(b => {
-                    b.className = 'cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100';
-                });
-                btn.className = 'cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md';
-                currentCat = btn.getAttribute('data-category');
-                applyFilters();
-            });
-        });
-
-        matBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                matBtns.forEach(b => {
-                    b.className = 'mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100';
-                });
-                btn.className = 'mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm';
-                currentMat = btn.getAttribute('data-material');
-                applyFilters();
-            });
-        });
 
         // Cart logic
         let cartItemCount = 0;
@@ -408,7 +333,6 @@
     async function loadProducts() {
 
         try {
-
             const response = await fetch(CSV_URL, { redirect: 'follow' });
             const text = await response.text();
             const data = parseCSV(text);
@@ -419,12 +343,11 @@
                 return obj;
             }).filter(p => p['Identifiant (SKU)']);
 
-
             const grid = document.getElementById('product-grid');
 
             // Show skeletons
             let skeletonHtml = '';
-            for(let i=0; i<4; i++) {
+            for(let i=0; i<8; i++) {
                 skeletonHtml += `
                     <div class="glass-card p-4">
                         <div class="h-64 mb-4 skeleton img-rounded"></div>
@@ -442,17 +365,67 @@
             grid.innerHTML = skeletonHtml;
 
 
-
             setTimeout(() => {
                 grid.innerHTML = '';
 
-                // Shuffle array and get 4 items
-                let shuffled = products.sort(() => 0.5 - Math.random());
-                let selectedProducts = shuffled.slice(0, 4);
+                const uniqueCategories = new Set();
+                const uniqueMaterials = new Set();
+                const knownMaterials = ['jean', 'voile', 'velours', 'cuir', 'soie', 'coton', 'lin', 'toile'];
 
-                selectedProducts.forEach(p => {
+                products.forEach(p => {
+                    let cat = p['Catégorie'] ? p['Catégorie'].toLowerCase() : '';
+                    if (cat) uniqueCategories.add(cat);
+
+                    let productName = p['Nom du produit'] ? p['Nom du produit'].toLowerCase() : '';
+                    let productDesc = p['Description courte'] ? p['Description courte'].toLowerCase() : '';
+
+                    let foundMaterial = 'all';
+                    for (let mat of knownMaterials) {
+                        if (productName.includes(mat) || productDesc.includes(mat)) {
+                            foundMaterial = mat;
+                            uniqueMaterials.add(mat);
+                            break;
+                        }
+                    }
+
+                    p._matFilter = foundMaterial;
+                });
+
+                // Generate Category Filters
+                const catContainer = document.getElementById('category-filters');
+                if (catContainer) {
+                    let catHtml = `<button class="cat-btn active btn-round px-5 py-2 font-bold bg-[#6D8A68] text-white shadow-md" data-category="all">Toutes les pièces</button>`;
+                    uniqueCategories.forEach(cat => {
+                        let catName = cat.charAt(0).toUpperCase() + cat.slice(1);
+                        catHtml += `<button class="cat-btn btn-round px-5 py-2 font-bold bg-white text-gray-600 hover:bg-[#F2F6F1] hover:text-[#6D8A68] shadow-sm border border-gray-100" data-category="${cat}">${catName}</button>`;
+                    });
+                    catContainer.innerHTML = catHtml;
+                }
+
+                // Generate Material Filters
+                const matContainer = document.getElementById('material-filters');
+                if (matContainer) {
+                    let matHtml = `
+                    <span class="text-sm font-semibold text-gray-500 self-center mr-2">Filtrer par matière :</span>
+                    <button class="mat-btn active btn-round px-3 py-1 text-sm font-bold bg-[#D4A373] text-white shadow-sm" data-material="all">Toutes</button>`;
+
+                    const matLabels = {
+                        'jean': 'Jean recyclé',
+                        'voile': 'Voile de bateau',
+                        'velours': 'Velours vintage'
+                    };
+
+                    uniqueMaterials.forEach(mat => {
+                        let label = matLabels[mat] || mat.charAt(0).toUpperCase() + mat.slice(1);
+                        matHtml += `<button class="mat-btn btn-round px-3 py-1 text-sm font-bold bg-white text-gray-600 hover:bg-[#FAEDCB] hover:text-[#D4A373] shadow-sm border border-gray-100" data-material="${mat}">${label}</button>`;
+                    });
+                    matContainer.innerHTML = matHtml;
+                }
+
+                // Render Products
+                products.forEach(p => {
                     let catFilter = p['Catégorie'] ? p['Catégorie'].toLowerCase() : '';
-                    let matFilter = 'all';
+                    let matFilter = p._matFilter;
 
                     const card = document.createElement('div');
                     card.className = 'glass-card p-4 group fade-in';
@@ -480,9 +453,9 @@
                     grid.appendChild(card);
                 });
 
-                // applyFilters is no longer needed in index.html for rendering products, we just deleted the filters.
+                attachFilterListeners();
+                if(typeof applyFilters === 'function') applyFilters();
             }, 1500);
-
         } catch (e) {
             console.error('Failed to load products', e);
         }
