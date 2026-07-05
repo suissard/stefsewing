@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paiement - Stef.Sewing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: #faedcb;
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(212, 163, 115, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 0%,
+            rgba(109, 138, 104, 0.15) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      h1,
+      h2,
+      h3,
+      .font-round {
+        font-family: "Poppins", sans-serif;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+      }
+      .input-field {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid #e5e7eb;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: all 0.2s;
+        outline: none;
+      }
+      .input-field:focus {
+        border-color: #d4a373;
+        box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.2);
+      }
+    </style>
+  </head>
+  <body
+    class="text-gray-800 antialiased selection:bg-[#D4A373] selection:text-white"
+  >
+    <header
+      class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-white/50 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-center"
+      >
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div
+            class="w-10 h-10 bg-[#6D8A68] rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition transform shadow-md"
+          >
+            S
+          </div>
+          <span
+            class="text-2xl font-bold text-gray-800 tracking-tight font-round"
+            >Stef<span class="text-[#D4A373]">.</span>Sewing</span
+          >
+        </a>
+      </div>
+    </header>
+
+    <main class="flex-grow py-12 px-4 sm:px-6 max-w-3xl mx-auto w-full">
+      <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-gray-800 font-round mb-2">
+          Paiement sécurisé
+        </h1>
+        <p class="text-gray-600">
+          Veuillez renseigner vos informations pour finaliser la commande.
+        </p>
+      </div>
+
+      <form
+        action="confirmation.html"
+        class="space-y-8 glass-card rounded-3xl p-8 sm:p-12"
+      >
+        <!-- Informations de livraison -->
+        <div>
+          <h2
+            class="text-xl font-bold text-gray-800 mb-6 font-round flex items-center gap-2"
+          >
+            <span
+              class="bg-[#6D8A68] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm"
+              >1</span
+            >
+            Informations de livraison
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Prénom</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field"
+                placeholder="Jane"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Nom</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field"
+                placeholder="Doe"
+              />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Adresse</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field"
+                placeholder="123 rue de la mode"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Code Postal</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field"
+                placeholder="75000"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Ville</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field"
+                placeholder="Paris"
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-gray-200" />
+
+        <!-- Informations de paiement -->
+        <div>
+          <h2
+            class="text-xl font-bold text-gray-800 mb-6 font-round flex items-center gap-2"
+          >
+            <span
+              class="bg-[#D4A373] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm"
+              >2</span
+            >
+            Carte bancaire
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-1"
+                >Numéro de carte</label
+              >
+              <input
+                type="text"
+                required
+                class="input-field font-mono"
+                placeholder="0000 0000 0000 0000"
+                maxlength="19"
+              />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1"
+                  >Date d'expiration</label
+                >
+                <input
+                  type="text"
+                  required
+                  class="input-field font-mono"
+                  placeholder="MM/AA"
+                  maxlength="5"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1"
+                  >CVC</label
+                >
+                <input
+                  type="text"
+                  required
+                  class="input-field font-mono"
+                  placeholder="123"
+                  maxlength="3"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="w-full bg-[#6D8A68] text-white font-bold text-lg py-4 rounded-xl hover:bg-[#5a7356] transition shadow-lg flex justify-center items-center gap-3"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+            Payer <span id="pay-amount"></span>
+          </button>
+          <p
+            class="text-center text-sm text-gray-500 mt-4 flex justify-center items-center gap-1"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+            Paiement 100% sécurisé
+          </p>
+        </div>
+      </form>
+    </main>
+
+    <script src="cart.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cart = getCart();
+        if (cart.length === 0) {
+          window.location.href = "panier.html";
+          return;
+        }
+        const total = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0,
+        );
+        document.getElementById("pay-amount").innerText =
+          total.toFixed(2) + "€";
+      });
+    </script>
+  </body>
+</html>
