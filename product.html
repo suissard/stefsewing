@@ -172,11 +172,13 @@
                     <h1 id="prod-name" class="text-4xl font-bold text-gray-800 font-round mb-4"></h1>
                     <p id="prod-desc" class="text-gray-600 mb-8 leading-relaxed"></p>
                     <div id="cart-status-container" class="mb-6 transition-all duration-300"></div>
-                    <div class="flex items-center gap-6 mt-auto">
-                        <span id="prod-price" class="text-3xl font-bold text-gray-800"></span>
-                        <button id="add-btn" class="btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full">
-                            Ajouter au panier
-                        </button>
+                    <div class="flex items-center gap-6 mt-auto w-full">
+                        <span id="prod-price" class="text-3xl font-bold text-gray-800 flex-shrink-0"></span>
+                        <div id="action-container" class="flex-1">
+                            <button id="add-btn" class="btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full">
+                                Ajouter au panier
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -290,6 +292,34 @@
     </script>
 
 <script>
+    let activeProduct = null;
+
+    function handleAddProduct() {
+        if (!activeProduct) return;
+        const sku = activeProduct['Identifiant (SKU)'];
+        let prixVal = parseFloat((activeProduct['Prix'] || '0').replace(',','.'));
+        let pName = activeProduct['Nom du produit'].replace(/'/g, "&#39;");
+        
+        if (typeof addToCart === 'function') {
+            addToCart(sku, pName, prixVal, activeProduct['imageUrl']);
+            
+            // Update badge immediately
+            updateCartStatus(sku, true);
+
+            // Temporary visual feedback on the button
+            const addBtn = document.getElementById('add-btn');
+            if (addBtn) {
+                addBtn.innerText = "✓ Ajouté !";
+                addBtn.className = "btn-round bg-[#6D8A68] text-white font-bold py-3 px-8 transition shadow-md w-full scale-105";
+                addBtn.disabled = true;
+            }
+
+            setTimeout(() => {
+                updateCartStatus(sku, false);
+            }, 1200);
+        }
+    }
+
     function updateCartStatus(sku, skipButtonUpdate = false) {
         const container = document.getElementById('cart-status-container');
         if (!container) return;
@@ -319,14 +349,28 @@
         }
 
         if (!skipButtonUpdate) {
-            const addBtn = document.getElementById('add-btn');
-            if (addBtn) {
+            const actionContainer = document.getElementById('action-container');
+            if (actionContainer) {
                 if (item) {
-                    addBtn.innerText = "Ajouter à nouveau";
-                    addBtn.className = "btn-round bg-[#6D8A68] text-white font-bold py-3 px-8 hover:bg-[#5a7455] transition shadow-md w-full";
+                    actionContainer.innerHTML = `
+                        <div class="flex items-center gap-3 w-full fade-in">
+                            <button onclick="updateCartQuantity('${sku}', -1)" class="w-12 h-12 flex items-center justify-center rounded-full bg-white hover:bg-gray-100 text-gray-600 border border-gray-200 shadow-sm transition font-bold text-xl" aria-label="Retirer 1">-</button>
+                            <span class="flex-1 text-center font-bold text-[#6D8A68] bg-[#F2F6F1] border border-[#D1E2CF] rounded-full py-3 text-sm">
+                                ${item.quantity} au panier
+                            </span>
+                            <button onclick="updateCartQuantity('${sku}', 1)" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#6D8A68] hover:bg-[#5a7455] text-white shadow-md transition font-bold text-xl" aria-label="Ajouter 1">+</button>
+                        </div>
+                    `;
                 } else {
-                    addBtn.innerText = "Ajouter au panier";
-                    addBtn.className = "btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full";
+                    actionContainer.innerHTML = `
+                        <button id="add-btn" class="btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full">
+                            Ajouter au panier
+                        </button>
+                    `;
+                    const btn = document.getElementById('add-btn');
+                    if (btn) {
+                        btn.onclick = handleAddProduct;
+                    }
                 }
             }
         }
@@ -346,6 +390,8 @@
             const product = products.find(p => p['Identifiant (SKU)'] === sku);
 
             if (product) {
+                activeProduct = product;
+                
                 document.getElementById('loading').classList.add('hide');
                 document.getElementById('product-container').classList.remove('hide');
                 document.getElementById('product-container').classList.add('fade-in');
@@ -357,32 +403,8 @@
                 document.getElementById('prod-desc').innerText = product['Description longue'] || product['Description courte'];
                 document.getElementById('prod-price').innerText = product['Prix'] + '€';
 
-                let prixVal = parseFloat((product['Prix'] || '0').replace(',','.'));
-                let pName = product['Nom du produit'].replace(/'/g, "&#39;");
-
                 // Initialize cart status badge and button style
                 updateCartStatus(sku);
-
-                document.getElementById('add-btn').onclick = function() {
-                    if (typeof addToCart === 'function') {
-                        addToCart(product['Identifiant (SKU)'], pName, prixVal, product['imageUrl']);
-                        
-                        // Update badge immediately
-                        updateCartStatus(sku, true);
-
-                        // Temporary visual feedback on the button
-                        const addBtn = document.getElementById('add-btn');
-                        addBtn.innerText = "✓ Ajouté !";
-                        addBtn.className = "btn-round bg-[#6D8A68] text-white font-bold py-3 px-8 transition shadow-md w-full scale-105";
-                        addBtn.disabled = true;
-
-                        setTimeout(() => {
-                            addBtn.disabled = false;
-                            addBtn.classList.remove('scale-105');
-                            updateCartStatus(sku, false);
-                        }, 1200);
-                    }
-                };
             } else {
                 document.getElementById('loading').innerText = 'Produit non trouvé.';
             }
