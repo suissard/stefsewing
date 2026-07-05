@@ -9,11 +9,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+        }
         body {
             font-family: 'Nunito', sans-serif;
             background-color: #fdf8f5;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
         h1, h2, h3, h4, h5, .font-round {
             font-family: 'Fredoka', sans-serif;
@@ -84,7 +87,7 @@
         .img-rounded { border-radius: 1rem 1rem 0 0; }
         .btn-round { border-radius: 9999px; transition: all 0.3s ease; }
 
-        .hide { display: none; }
+        .hide { display: none !important; }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
@@ -168,6 +171,7 @@
                     <span id="prod-cat" class="text-sm font-bold text-[#6D8A68] uppercase mb-2"></span>
                     <h1 id="prod-name" class="text-4xl font-bold text-gray-800 font-round mb-4"></h1>
                     <p id="prod-desc" class="text-gray-600 mb-8 leading-relaxed"></p>
+                    <div id="cart-status-container" class="mb-6 transition-all duration-300"></div>
                     <div class="flex items-center gap-6 mt-auto">
                         <span id="prod-price" class="text-3xl font-bold text-gray-800"></span>
                         <button id="add-btn" class="btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full">
@@ -286,43 +290,48 @@
     </script>
 
 <script>
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY/export?format=csv';
+    function updateCartStatus(sku, skipButtonUpdate = false) {
+        const container = document.getElementById('cart-status-container');
+        if (!container) return;
 
-    function parseCSV(str) {
-        const arr = [];
-        let quote = false;
-        for (let row = 0, col = 0, c = 0; c < str.length; c++) {
-            let cc = str[c], nc = str[c+1];
-            arr[row] = arr[row] || [];
-            arr[row][col] = arr[row][col] || '';
+        if (typeof getCart !== 'function') return;
+        const cart = getCart();
+        const item = cart.find(i => i.sku === sku);
 
-            if (cc == '"' && quote && nc == '"') {
-                arr[row][col] += cc; ++c; continue;
-            }
-            if (cc == '"') {
-                quote = !quote; continue;
-            }
-            if (cc == ',' && !quote) {
-                ++col; continue;
-            }
-            if (cc == '\r' && nc == '\n' && !quote) {
-                ++row; col = 0; ++c; continue;
-            }
-            if (cc == '\n' && !quote) {
-                ++row; col = 0; continue;
-            }
-            if (cc == '\r' && !quote) {
-                ++row; col = 0; continue;
-            }
-            arr[row][col] += cc;
+        if (item) {
+            container.innerHTML = `
+                <div class="flex items-center gap-3 text-[#6D8A68] bg-[#F2F6F1] px-4 py-3 rounded-2xl border border-[#D1E2CF] font-semibold text-sm fade-in shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-[#6D8A68] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-gray-700">Cet article est dans votre panier</span>
+                        <div class="text-xs text-gray-500 mt-0.5">Quantité : <strong class="text-[#6D8A68] font-bold text-sm">${item.quantity}</strong></div>
+                    </div>
+                </div>
+            `;
+            container.classList.remove('hide');
+        } else {
+            container.innerHTML = '';
+            container.classList.add('hide');
         }
-        return arr;
+
+        if (!skipButtonUpdate) {
+            const addBtn = document.getElementById('add-btn');
+            if (addBtn) {
+                if (item) {
+                    addBtn.innerText = "Ajouter à nouveau";
+                    addBtn.className = "btn-round bg-[#6D8A68] text-white font-bold py-3 px-8 hover:bg-[#5a7455] transition shadow-md w-full";
+                } else {
+                    addBtn.innerText = "Ajouter au panier";
+                    addBtn.className = "btn-round bg-[#D4A373] text-white font-bold py-3 px-8 hover:bg-[#b88c61] transition shadow-md w-full";
+                }
+            }
+        }
     }
 
-    </script>
-
-
-<script>
     async function loadProductDetail() {
         const urlParams = new URLSearchParams(window.location.search);
         const sku = urlParams.get('sku');
@@ -332,15 +341,7 @@
         }
 
         try {
-            const response = await fetch(CSV_URL, { redirect: 'follow' });
-            const text = await response.text();
-            const data = parseCSV(text);
-            const headers = data[0];
-            const products = data.slice(1).map(row => {
-                let obj = {};
-                headers.forEach((h, i) => obj[h.trim()] = row[i]);
-                return obj;
-            });
+            const products = await fetchGoogleSheet('10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY');
 
             const product = products.find(p => p['Identifiant (SKU)'] === sku);
 
@@ -359,9 +360,27 @@
                 let prixVal = parseFloat((product['Prix'] || '0').replace(',','.'));
                 let pName = product['Nom du produit'].replace(/'/g, "&#39;");
 
+                // Initialize cart status badge and button style
+                updateCartStatus(sku);
+
                 document.getElementById('add-btn').onclick = function() {
                     if (typeof addToCart === 'function') {
                         addToCart(product['Identifiant (SKU)'], pName, prixVal, product['imageUrl']);
+                        
+                        // Update badge immediately
+                        updateCartStatus(sku, true);
+
+                        // Temporary visual feedback on the button
+                        const addBtn = document.getElementById('add-btn');
+                        addBtn.innerText = "✓ Ajouté !";
+                        addBtn.className = "btn-round bg-[#6D8A68] text-white font-bold py-3 px-8 transition shadow-md w-full scale-105";
+                        addBtn.disabled = true;
+
+                        setTimeout(() => {
+                            addBtn.disabled = false;
+                            addBtn.classList.remove('scale-105');
+                            updateCartStatus(sku, false);
+                        }, 1200);
                     }
                 };
             } else {
@@ -374,6 +393,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadProductDetail);
+
+    // Dynamic updates when the cart is altered elsewhere (e.g. cart dropdown)
+    window.addEventListener('cartChanged', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sku = urlParams.get('sku');
+        if (sku) {
+            updateCartStatus(sku);
+        }
+    });
 </script>
 
 <script src="cart.js"></script>

@@ -1,5 +1,51 @@
 const CART_STORAGE_KEY = "stef_sewing_cart";
 
+function fetchGoogleSheet(sheetId) {
+  return new Promise((resolve, reject) => {
+    const callbackName = "gsv_" + Math.random().toString(36).substring(2, 9);
+    
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      script.remove();
+      
+      if (!data || !data.table || !data.table.cols || !data.table.rows) {
+        reject(new Error("Format de données Google Sheets invalide."));
+        return;
+      }
+      
+      const cols = data.table.cols;
+      const rows = data.table.rows;
+      const headers = cols.map(col => col.label ? col.label.trim() : '');
+      
+      const products = rows.map(row => {
+        let obj = {};
+        headers.forEach((header, index) => {
+          if (!header) return;
+          const cell = row.c && row.c[index];
+          let value = '';
+          if (cell) {
+            value = (cell.f !== undefined && cell.f !== null) ? cell.f : 
+                    (cell.v !== undefined && cell.v !== null) ? String(cell.v) : '';
+          }
+          obj[header] = value;
+        });
+        return obj;
+      }).filter(p => p['Identifiant (SKU)']);
+      
+      resolve(products);
+    };
+    
+    const script = document.createElement("script");
+    script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=responseHandler:${callbackName}`;
+    script.onerror = () => {
+      delete window[callbackName];
+      script.remove();
+      reject(new Error("Erreur de réseau lors du chargement de la feuille Google Sheets."));
+    };
+    document.body.appendChild(script);
+  });
+}
+
 function getCart() {
   const cart = localStorage.getItem(CART_STORAGE_KEY);
   return cart ? JSON.parse(cart) : [];
@@ -8,6 +54,7 @@ function getCart() {
 function saveCart(cart) {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   updateCartUI();
+  window.dispatchEvent(new CustomEvent("cartChanged", { detail: { cart } }));
 }
 
 function addToCart(sku, name, price, imageUrl) {

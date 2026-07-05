@@ -96,66 +96,90 @@
       >
         <!-- Informations de livraison -->
         <div>
-          <h2
-            class="text-xl font-bold text-gray-800 mb-6 font-round flex items-center gap-2"
-          >
-            <span
-              class="bg-[#6D8A68] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm"
-              >1</span
+          <div class="flex justify-between items-center mb-6">
+            <h2
+              class="text-xl font-bold text-gray-800 font-round flex items-center gap-2"
             >
-            Informations de livraison
-          </h2>
+              <span
+                class="bg-[#6D8A68] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm"
+                >1</span
+              >
+              Informations de livraison
+            </h2>
+            <button
+              type="button"
+              id="demo-fill-btn"
+              class="text-xs bg-[#D4A373]/15 text-[#b88c61] hover:bg-[#D4A373]/30 font-bold px-3 py-1.5 rounded-lg transition duration-200 flex items-center gap-1 shadow-sm"
+            >
+              ⚡ Remplir pour test
+            </button>
+          </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="firstname" class="block text-sm font-bold text-gray-700 mb-1"
                 >Prénom</label
               >
               <input
                 type="text"
+                id="firstname"
+                name="firstname"
+                autocomplete="given-name"
                 required
                 class="input-field"
                 placeholder="Jane"
               />
             </div>
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="lastname" class="block text-sm font-bold text-gray-700 mb-1"
                 >Nom</label
               >
               <input
                 type="text"
+                id="lastname"
+                name="lastname"
+                autocomplete="family-name"
                 required
                 class="input-field"
                 placeholder="Doe"
               />
             </div>
             <div class="sm:col-span-2">
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="address" class="block text-sm font-bold text-gray-700 mb-1"
                 >Adresse</label
               >
               <input
                 type="text"
+                id="address"
+                name="address"
+                autocomplete="street-address"
                 required
                 class="input-field"
                 placeholder="123 rue de la mode"
               />
             </div>
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="zipcode" class="block text-sm font-bold text-gray-700 mb-1"
                 >Code Postal</label
               >
               <input
                 type="text"
+                id="zipcode"
+                name="zipcode"
+                autocomplete="postal-code"
                 required
                 class="input-field"
                 placeholder="75000"
               />
             </div>
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="city" class="block text-sm font-bold text-gray-700 mb-1"
                 >Ville</label
               >
               <input
                 type="text"
+                id="city"
+                name="city"
+                autocomplete="address-level2"
                 required
                 class="input-field"
                 placeholder="Paris"
@@ -179,11 +203,14 @@
           </h2>
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1"
+              <label for="cc-number" class="block text-sm font-bold text-gray-700 mb-1"
                 >Numéro de carte</label
               >
               <input
                 type="text"
+                id="cc-number"
+                name="ccnumber"
+                autocomplete="cc-number"
                 required
                 class="input-field font-mono"
                 placeholder="0000 0000 0000 0000"
@@ -192,11 +219,14 @@
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1"
+                <label for="cc-exp" class="block text-sm font-bold text-gray-700 mb-1"
                   >Date d'expiration</label
                 >
                 <input
                   type="text"
+                  id="cc-exp"
+                  name="ccexp"
+                  autocomplete="cc-exp"
                   required
                   class="input-field font-mono"
                   placeholder="MM/AA"
@@ -204,11 +234,14 @@
                 />
               </div>
               <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1"
+                <label for="cc-csc" class="block text-sm font-bold text-gray-700 mb-1"
                   >CVC</label
                 >
                 <input
                   type="text"
+                  id="cc-csc"
+                  name="cccsc"
+                  autocomplete="cc-csc"
                   required
                   class="input-field font-mono"
                   placeholder="123"
@@ -275,6 +308,73 @@
         );
         document.getElementById("pay-amount").innerText =
           total.toFixed(2) + "€";
+
+        // Demo autofill implementation
+        const demoFillBtn = document.getElementById("demo-fill-btn");
+        if (demoFillBtn) {
+          demoFillBtn.addEventListener("click", () => {
+            const fields = {
+              "firstname": "Jean",
+              "lastname": "Dupont",
+              "address": "42 Rue de Rivoli",
+              "zipcode": "75001",
+              "city": "Paris",
+              "cc-number": "4242 4242 4242 4242",
+              "cc-exp": "12/28",
+              "cc-csc": "123"
+            };
+
+            for (const [id, val] of Object.entries(fields)) {
+              const input = document.getElementById(id);
+              if (input) {
+                input.value = val;
+                // Highlight filled inputs briefly
+                input.classList.add("ring-2", "ring-[#D4A373]", "border-[#D4A373]");
+                setTimeout(() => {
+                  input.classList.remove("ring-2", "ring-[#D4A373]", "border-[#D4A373]");
+                }, 800);
+              }
+            }
+          });
+        }
+
+        // Auto-format card number
+        const ccNumberInput = document.getElementById("cc-number");
+        if (ccNumberInput) {
+          ccNumberInput.addEventListener("input", (e) => {
+            let value = e.target.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+            let matches = value.match(/\d{4,16}/g);
+            let match = (matches && matches[0]) || "";
+            let parts = [];
+
+            for (let i = 0, len = match.length; i < len; i += 4) {
+              parts.push(match.substring(i, i + 4));
+            }
+
+            if (parts.length > 0) {
+              e.target.value = parts.join(" ");
+            } else {
+              e.target.value = value;
+            }
+          });
+        }
+
+        // Auto-format expiry date
+        const ccExpInput = document.getElementById("cc-exp");
+        if (ccExpInput) {
+          ccExpInput.addEventListener("input", (e) => {
+            let value = e.target.value.replace(
+              /^([1-9]\/|[2-9])$/g, '0$1/'
+            ).replace(
+              /^(0[1-9]|1[0-2])$/g, '$1/'
+            ).replace(
+              /^([0-9]{2})\/?([0-9]{2})$/g, '$1/$2'
+            ).replace(
+              /[^\d\/]/g, ""
+            );
+            e.target.value = value;
+          });
+        }
       });
     </script>
   </body>

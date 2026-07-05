@@ -9,11 +9,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+        }
         body {
             font-family: 'Nunito', sans-serif;
             background-color: #fdf8f5;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
         h1, h2, h3, h4, h5, .font-round {
             font-family: 'Fredoka', sans-serif;
@@ -84,7 +87,7 @@
         .img-rounded { border-radius: 1rem 1rem 0 0; }
         .btn-round { border-radius: 9999px; transition: all 0.3s ease; }
         
-        .hide { display: none; }
+        .hide { display: none !important; }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
@@ -102,6 +105,15 @@
             100% { background-position: -200% 0; }
         }
 
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body class="text-gray-800 flex flex-col min-h-screen relative">
@@ -193,7 +205,7 @@
 
                 <!-- Product Grid -->
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
+            <div class="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-6 pb-4 no-scrollbar snap-x snap-mandatory" id="product-grid"></div>
             <div class="mt-12 text-center">
                 <a href="boutique.html" class="btn-round bg-[#6D8A68] text-white text-lg font-bold px-8 py-4 shadow-lg hover:bg-[#526e4e] hover:shadow-xl hover:-translate-y-1 transform inline-block">Voir toute la boutique</a>
             </div>
@@ -372,52 +384,10 @@
     </script>
 
 <script>
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY/export?format=csv';
-
-    function parseCSV(str) {
-        const arr = [];
-        let quote = false;
-        for (let row = 0, col = 0, c = 0; c < str.length; c++) {
-            let cc = str[c], nc = str[c+1];
-            arr[row] = arr[row] || [];
-            arr[row][col] = arr[row][col] || '';
-
-            if (cc == '"' && quote && nc == '"') {
-                arr[row][col] += cc; ++c; continue;
-            }
-            if (cc == '"') {
-                quote = !quote; continue;
-            }
-            if (cc == ',' && !quote) {
-                ++col; continue;
-            }
-            if (cc == '\r' && nc == '\n' && !quote) {
-                ++row; col = 0; ++c; continue;
-            }
-            if (cc == '\n' && !quote) {
-                ++row; col = 0; continue;
-            }
-            if (cc == '\r' && !quote) {
-                ++row; col = 0; continue;
-            }
-            arr[row][col] += cc;
-        }
-        return arr;
-    }
-
     async function loadProducts() {
 
         try {
-
-            const response = await fetch(CSV_URL, { redirect: 'follow' });
-            const text = await response.text();
-            const data = parseCSV(text);
-            const headers = data[0];
-            const products = data.slice(1).map(row => {
-                let obj = {};
-                headers.forEach((h, i) => obj[h.trim()] = row[i]);
-                return obj;
-            }).filter(p => p['Identifiant (SKU)']);
+            const products = await fetchGoogleSheet('10IpT17XUO5SXC30sqex9bQXr33P2h9mxloUwc-YCSCY');
 
 
             const grid = document.getElementById('product-grid');
@@ -426,7 +396,7 @@
             let skeletonHtml = '';
             for(let i=0; i<4; i++) {
                 skeletonHtml += `
-                    <div class="glass-card p-4">
+                    <div class="glass-card p-4 flex-shrink-0 w-[75vw] sm:w-[42vw] md:w-[28vw] lg:w-auto snap-start">
                         <div class="h-64 mb-4 skeleton img-rounded"></div>
                         <div class="px-2">
                             <div class="h-6 w-3/4 mb-2 skeleton"></div>
@@ -455,7 +425,7 @@
                     let matFilter = 'all';
 
                     const card = document.createElement('div');
-                    card.className = 'glass-card p-4 group fade-in';
+                    card.className = 'glass-card p-4 group flex-shrink-0 w-[75vw] sm:w-[42vw] md:w-[28vw] lg:w-auto snap-start fade-in';
                     card.setAttribute('data-category', catFilter);
                     card.setAttribute('data-material', matFilter);
 
