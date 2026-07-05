@@ -428,6 +428,7 @@
                     card.className = 'glass-card p-4 group flex-shrink-0 w-[75vw] sm:w-[42vw] md:w-[28vw] lg:w-auto snap-start fade-in';
                     card.setAttribute('data-category', catFilter);
                     card.setAttribute('data-material', matFilter);
+                    card.setAttribute('data-sku', p['Identifiant (SKU)']);
 
                     let prixVal = p['Prix'] ? parseFloat(p['Prix'].replace(',','.')) || 0 : 0;
                     let productName = p['Nom du produit'] ? p['Nom du produit'].replace(/'/g, "&#39;") : '';
@@ -451,6 +452,7 @@
                 });
 
                 // applyFilters is no longer needed in index.html for rendering products, we just deleted the filters.
+                updateGridCartIndicators();
             }, 1500);
 
         } catch (e) {
@@ -458,7 +460,46 @@
         }
     }
 
+    function updateGridCartIndicators() {
+        if (typeof getCart !== 'function') return;
+        const cart = getCart();
+        
+        document.querySelectorAll('[data-sku]').forEach(card => {
+            const sku = card.getAttribute('data-sku');
+            const item = cart.find(i => i.sku === sku);
+            
+            const imgContainer = card.querySelector('.relative.img-rounded');
+            const existingBadge = card.querySelector('.cart-grid-badge');
+            if (existingBadge) existingBadge.remove();
+            
+            const btn = card.querySelector('button');
+            
+            if (item) {
+                if (imgContainer) {
+                    const badge = document.createElement('div');
+                    badge.className = 'cart-grid-badge absolute top-2 left-2 bg-[#6D8A68]/95 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm flex items-center gap-1 fade-in';
+                    badge.innerHTML = `
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>${item.quantity} au panier</span>
+                    `;
+                    imgContainer.appendChild(badge);
+                }
+                
+                if (btn) {
+                    btn.className = "btn-round bg-[#6D8A68] text-white w-9 h-9 flex items-center justify-center hover:bg-[#5a7455] shadow-md transition font-bold";
+                    btn.innerHTML = `${item.quantity}`;
+                }
+            } else {
+                if (btn) {
+                    btn.className = "btn-round bg-[#D4A373] text-white w-9 h-9 flex items-center justify-center hover:bg-[#b88c61] shadow-md transition";
+                    btn.innerHTML = "+";
+                }
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', loadProducts);
+    window.addEventListener('cartChanged', updateGridCartIndicators);
 </script>
 
 <script src="cart.js"></script>
